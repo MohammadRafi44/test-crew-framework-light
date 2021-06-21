@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:cal="http://www.example.com/spring/soap/api/calculator"
+  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Body>
+    <cal:CalculatorRequest>
+      <cal:firstNumber>$firstNumber$</cal:firstNumber>
+      <cal:scenarioType>$scenarioType$</cal:scenarioType>
+      <cal:secondNumber>$secondNumber$</cal:secondNumber>
+    </cal:CalculatorRequest>
+  </soapenv:Body>
+  <soapenv:Header/>
+</soapenv:Envelope>

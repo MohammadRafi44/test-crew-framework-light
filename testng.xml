@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test Suite" verbose="1" parallel="methods" thread-count="1">
+  <listeners>
+    <listener class-name="com.example.listener.ExecutionListener"/>
+    <listener class-name="com.example.listener.TestListener"/>
+    <listener class-name="com.example.listener.AnnotationTransformer"/>
+    <listener class-name="com.example.listener.SuiteListener"/>
+  </listeners>
+  <test name="My Tests">
+    <packages>
+      <package name="com.example.tests.*"/>
+    </packages>
+  </test>
+</suite>
