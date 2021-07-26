@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,6 +41,11 @@ public class ConfigManager {
       }
     }
     return configMap.get(key);
+  }
+
+  public static String getBrowser() {
+    return (StringUtils.isNotBlank(System.getProperty("browser")) ? System.getProperty("browser") : getConfigProperty("browser"))
+        .toUpperCase();
   }
 
 }

@@ -3,6 +3,7 @@ package com.example.utils;
 import com.example.base.DriverManager;
 import com.example.report.ExtentTestManager;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.Objects;
 import org.apache.commons.io.IOUtils;
@@ -69,6 +70,10 @@ public class Helper {
 
   public static String encode(String stringToEncode) {
     return Base64.getEncoder().encodeToString(stringToEncode.getBytes(StandardCharsets.UTF_8));
+  }
+
+  public static String getAppFile(String fileName){
+    return Paths.get(System.getProperty("user.dir"), "src", "test", "resources", fileName).toString();
   }
 
 }

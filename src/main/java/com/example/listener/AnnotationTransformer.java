@@ -23,6 +23,8 @@ public class AnnotationTransformer implements IAnnotationTransformer {
         if (testMethod.getName().equalsIgnoreCase(stringStringMap.get("TestMethodName"))) {
           if (stringStringMap.get("Execute").equalsIgnoreCase("No")) {
             annotation.setEnabled(false);
+          } else {
+            annotation.setDataProvider("testDataProvider");
           }
         }
       }

@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 public class DemoSiteTest extends BaseTest {
 
   // Test with reusable methods in same class
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void demoSiteCreateUserAndLogin(Map<String, String> data) {
     launchDemoSite(data);
     createUser(data);
@@ -57,8 +57,4 @@ public class DemoSiteTest extends BaseTest {
     Helper.log("Login successful");
   }
 
-  @Override
-  public DesiredCapabilities addCapabilities() {
-    return null;
-  }
 }

@@ -7,12 +7,7 @@ import org.testng.annotations.Test;
 
 public class FlipkartTests extends BaseTest {
 
-  @Override
-  public DesiredCapabilities addCapabilities() {
-    return null;
-  }
-
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void flipkartSearch(Map<String, String> data) {
     // TODO
   }

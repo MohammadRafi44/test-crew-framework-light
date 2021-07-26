@@ -8,18 +8,12 @@ import com.example.base.BaseTest;
 import com.example.modules.amazon.AmazonModule;
 import com.example.utils.Helper;
 import java.util.Map;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 public class AmazonTests extends BaseTest {
 
-  @Override
-  public DesiredCapabilities addCapabilities() {
-    return null;
-  }
-
   // In line web actions example
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void amazonSearch(Map<String, String> data) {
     Actions.openUrl(data.get("Url"));
     Actions.takeScreenshot();
@@ -32,13 +26,11 @@ public class AmazonTests extends BaseTest {
   }
 
   // Test with separate module class example
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void amazonSearchWithModuleApproach(Map<String, String> data) {
     AmazonModule amazonModule = new AmazonModule();
     amazonModule.launchAmazon(data)
         .search(data);
     Helper.log("My custom comment to extent from the test");
   }
-
-
 }

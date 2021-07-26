@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 public class TypiCodeRestApiTest extends BaseTest {
 
   // Raw rest assured use
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void typiCodeApiGetTestRawUse(Map<String, String> data) {
     Response response = given()
         .log().all(true)
@@ -32,7 +32,7 @@ public class TypiCodeRestApiTest extends BaseTest {
   }
 
   // Using action
-  @Test(dataProvider = "testDataProvider")
+  @Test()
   public void typiCodeApiGetTestUsingAction(Map<String, String> data) {
     RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
     requestSpecBuilder.addHeader("Content-Type", "application/json");
@@ -41,8 +41,4 @@ public class TypiCodeRestApiTest extends BaseTest {
     Helper.log("My custom comment to extent from the test");
   }
 
-  @Override
-  public DesiredCapabilities addCapabilities() {
-    return null;
-  }
 }

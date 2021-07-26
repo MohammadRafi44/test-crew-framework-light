@@ -25,13 +25,14 @@ public class TestListener implements ITestListener {
 
   @Override
   public void onTestFailure(ITestResult iTestResult) {
-    LOGGER.debug("Failed test method : [{}] in class [{}]", iTestResult.getMethod().getMethodName(),
+    LOGGER.error("Failed test method : [{}] in class [{}]", iTestResult.getMethod().getMethodName(),
         iTestResult.getTestClass().getName());
+    LOGGER.error(iTestResult.getThrowable());
   }
 
   @Override
   public void onTestSkipped(ITestResult result) {
-    LOGGER.debug("Skipped test method : [{}] in class [{}]", result.getMethod().getMethodName(), result.getTestClass().getName());
+    LOGGER.error("Skipped test method : [{}] in class [{}]", result.getMethod().getMethodName(), result.getTestClass().getName());
   }
 
   @Override
