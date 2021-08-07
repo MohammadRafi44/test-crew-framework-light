@@ -29,7 +29,6 @@ public class SwagMobileAppTest extends BaseTest {
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
     desiredCapabilities.setCapability(MobileCapabilityType.UDID, "emulator-5554");
     desiredCapabilities.setCapability(AndroidMobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-    desiredCapabilities.setCapability(AndroidMobileCapabilityType.VERSION, "10");
     desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.swaglabsmobileapp");
     desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.swaglabsmobileapp.SplashActivity");
     desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, ANDROID_UIAUTOMATOR2);

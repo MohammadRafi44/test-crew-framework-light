@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
@@ -64,6 +65,7 @@ public abstract class BaseTest {
       DriverManager.initDriver(Browser.valueOf(ConfigManager.getBrowser()), addCapabilities());
     } else if (tcType.equalsIgnoreCase("mobile")) {
       LOGGER.info("Current Test_Type is Mobile. Will instantiate mobile driver");
+      MobileDriverManager.startAppium();
       MobileDriverManager.initDriver(addCapabilities());
     }
   }
@@ -99,6 +101,11 @@ public abstract class BaseTest {
       DriverManager.quitDriver();
     }
     ExcelManager.writeTestStatusToExcel(result);
+  }
+
+  @AfterSuite
+  public void stopAppium(){
+    MobileDriverManager.stopAppium();
   }
 
 }
