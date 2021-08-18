@@ -23,3 +23,5 @@ controller.worksheet.name=Controller
 
 ### For mobile sample test please install this app before running the test
 https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk
+
+### For auto download of driver set run time argument -Ddriver.auto.download=true

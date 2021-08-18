@@ -48,4 +48,9 @@ public class ConfigManager {
         .toUpperCase();
   }
 
+  public static boolean isDriverAutoDownload() {
+    return StringUtils.isNotBlank(getConfigProperty("driver.auto.download")) ? Boolean.parseBoolean(
+        getConfigProperty("driver.auto.download")) : Boolean.parseBoolean(System.getProperty("driver.auto.download", "false"));
+  }
+
 }

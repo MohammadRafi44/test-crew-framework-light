@@ -58,7 +58,7 @@ public class DriverManager {
       LOGGER.info("Browser : {}", browser);
       WebDriver driver;
       if (browser.toString().equalsIgnoreCase("chrome")) {
-        if (System.getProperty("driver.auto.download", "false").equals("true")) {
+        if (ConfigManager.isDriverAutoDownload()) {
           WebDriverManager.chromedriver().setup();
         } else {
           System.setProperty("webdriver.chrome.driver", ConfigManager.getConfigProperty("chrome.driver.binary.path"));
