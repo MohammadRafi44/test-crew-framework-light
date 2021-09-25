@@ -1,0 +1,4 @@
+This is release notes.
+Instructions for users as to what tests have been added etc...
+Blah blah
+All the files added to 'notes' folder are by default bundled in package
