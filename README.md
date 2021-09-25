@@ -26,8 +26,7 @@ https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.S
 
 ### For auto download of driver set run time argument -Ddriver.auto.download=true
 
-### To create package zip run : mvn clean -Pjar
+### To create package zip run : mvn clean verify -Ppackage
     - A file with name 'test-crew-framework-light-1.0.0-package.zip' will be created in target folder
     - Unzip and just run run-test.bat
     - You can edit run-test.bat in notepad and update your jdk directory path
-    - 
