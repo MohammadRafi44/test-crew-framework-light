@@ -50,8 +50,8 @@ public class Main {
     listeners.add(com.example.listener.SuiteListener.class);
     listeners.add(com.example.listener.ExecutionListener.class);
     testNG.setListenerClasses(listeners);
+    testNG.setVerbose(0);
     testNG.run();
-
   }
 
 }
