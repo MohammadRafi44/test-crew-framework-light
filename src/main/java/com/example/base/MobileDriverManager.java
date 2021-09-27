@@ -13,7 +13,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-
 /**
  * Selenium webDriver manager
  *
@@ -25,7 +24,7 @@ public class MobileDriverManager {
   private static final ThreadLocal<AndroidDriver<MobileElement>> WEB_DRIVER_THREAD_LOCAL = new ThreadLocal<>();
   private static AppiumDriverLocalService appiumDriverLocalService;
   private static URL appiumUrl;
-
+  private static boolean isAppiumStarted = false;
 
   private MobileDriverManager() {
   }
@@ -72,7 +71,7 @@ public class MobileDriverManager {
         appiumServiceBuilder.withAppiumJS(appiumMainJsFile);
         if (appiumConfig.isEnableAppiumLogs()) {
           appiumServiceBuilder.withArgument(GeneralServerFlag.LOG_LEVEL, "debug");
-        }else {
+        } else {
           appiumServiceBuilder.withArgument(GeneralServerFlag.LOG_LEVEL, "warn");
         }
         appiumServiceBuilder.withLogFile(new File("./target/appiumLogs"));
@@ -81,6 +80,7 @@ public class MobileDriverManager {
         appiumDriverLocalService.start();
       }
       appiumUrl = appiumConfig.getAppiumUrl(appiumDriverLocalService.getUrl());
+      isAppiumStarted = true;
     } catch (Exception e) {
       LOGGER.error(e);
       throw new RuntimeException(e);
@@ -89,6 +89,10 @@ public class MobileDriverManager {
 
   public static void stopAppium() {
     appiumDriverLocalService.stop();
+  }
+
+  public static Boolean isAppiumStarted() {
+    return isAppiumStarted;
   }
 
   private static class AppiumConfig {
@@ -108,5 +112,6 @@ public class MobileDriverManager {
     public Boolean isEnableAppiumLogs() {
       return Boolean.parseBoolean(ConfigManager.getConfigProperty("enable.appium.logs"));
     }
+
   }
 }

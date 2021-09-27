@@ -4,7 +4,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.example.report.ExtentTestManager;
 import com.example.utils.ConfigManager;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public abstract class BaseTest {
   }
 
   @DataProvider(name = "testDataProvider")
-  public static Object[] testDataProvider(Method method) throws IOException {
+  public static Object[] testDataProvider(Method method) {
     List<Map<String, String>> controllerRowsList = ExcelManager.getControllerRowsList();
     List<Map<String, String>> rowMapList = controllerRowsList.stream()
         .filter(rowMap -> method.getName().equals(rowMap.get("TestMethodName"))).collect(Collectors.toList());
@@ -91,7 +90,7 @@ public abstract class BaseTest {
       ExtentTestManager.getTest().pass("Test Skipped");
     } else {
       ExtentTestManager.getTest().fail("Test Failed");
-      if(result.getThrowable() != null) {
+      if (result.getThrowable() != null) {
         ExtentTestManager.getTest().fail(result.getThrowable());
       }
     }
@@ -103,9 +102,11 @@ public abstract class BaseTest {
     ExcelManager.writeTestStatusToExcel(result);
   }
 
-  @AfterSuite
-  public void stopAppium(){
-    MobileDriverManager.stopAppium();
+  @AfterSuite(alwaysRun = true)
+  public void stopAppium(ITestContext context) {
+    if (MobileDriverManager.isAppiumStarted()) {
+      MobileDriverManager.stopAppium();
+    }
   }
 
 }

@@ -14,6 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <apache.poi.version>4.1.2</apache.poi.version>
     <skipTests>false</skipTests>
     <suiteFile>testng.xml</suiteFile>
   </properties>
@@ -52,12 +53,12 @@
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
-      <version>4.1.2</version>
+      <version>${apache.poi.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
-      <version>4.1.2</version>
+      <version>${apache.poi.version}</version>
     </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -80,7 +81,6 @@
       <version>7.5.1</version>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
@@ -100,7 +100,6 @@
       </plugin>
     </plugins>
   </build>
-
   <profiles>
     <profile>
       <id>test</id>
@@ -234,7 +233,7 @@
                 <configuration>
                   <target>
                     <delete>
-                      <fileset dir="${project.build.directory}" includes="*.jar" />
+                      <fileset dir="${project.build.directory}" includes="*.jar"/>
                     </delete>
                   </target>
                 </configuration>
