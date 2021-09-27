@@ -189,7 +189,7 @@
             <version>3.3.0</version>
             <executions>
               <execution>
-                <id>make-jar</id>
+                <id>create-jar</id>
                 <phase>package</phase>
                 <goals>
                   <goal>single</goal>
@@ -207,7 +207,7 @@
                 </configuration>
               </execution>
               <execution>
-                <id>make-zip</id>
+                <id>create-zip</id>
                 <phase>package</phase>
                 <goals>
                   <goal>single</goal>

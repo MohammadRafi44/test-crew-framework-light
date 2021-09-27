@@ -26,35 +26,24 @@ public class Main {
                 + "Alternately you may manually delete target directory");
       }
     }
-
     XmlSuite xmlSuite = new XmlSuite();
     xmlSuite.setName("My Test Suite");
-
     XmlTest xmlTest = new XmlTest(xmlSuite);
     xmlTest.setName("My Tests");
-
     XmlPackage xmlPackage = new XmlPackage();
     xmlPackage.setName("com.example.tests.*");
     xmlTest.setXmlPackages(Collections.singletonList(xmlPackage));
-
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(Collections.singletonList(xmlSuite));
     testNG.setOutputDirectory("./target/test-output/");
-
     List<Class<? extends ITestNGListener>> listeners = new ArrayList<>();
     listeners.add(com.example.listener.TestListener.class);
     listeners.add(com.example.listener.AnnotationTransformer.class);
     listeners.add(com.example.listener.SuiteListener.class);
     listeners.add(com.example.listener.ExecutionListener.class);
     testNG.setListenerClasses(listeners);
-
     testNG.run();
 
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      //
-    }
   }
 
 }
