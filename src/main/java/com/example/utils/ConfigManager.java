@@ -1,6 +1,7 @@
 package com.example.utils;
 
 
+import com.example.base.Constants;
 import java.io.FileInputStream;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -18,7 +19,8 @@ import org.apache.logging.log4j.Logger;
  */
 public class ConfigManager {
 
-  private static final String TEST_CONFIG_FILE = Paths.get("config.properties").toString();
+  private static final String TEST_CONFIG_FILE = isExecutionViaJar() ? Paths.get("config.properties").toString()
+      : Paths.get(Constants.TEST_RESOURCES_DIR, "config.properties").toString();
   private static final Logger LOGGER = LogManager.getLogger(ConfigManager.class);
   private static Map<String, String> configMap = new HashMap<>();
 
@@ -51,6 +53,10 @@ public class ConfigManager {
   public static boolean isDriverAutoDownload() {
     return StringUtils.isNotBlank(getConfigProperty("driver.auto.download")) ? Boolean.parseBoolean(
         getConfigProperty("driver.auto.download")) : Boolean.parseBoolean(System.getProperty("driver.auto.download", "false"));
+  }
+
+  public static boolean isExecutionViaJar() {
+    return Boolean.parseBoolean(System.getProperty("isExecutionViaJar", "false"));
   }
 
 }

@@ -13,11 +13,11 @@
       <outputDirectory>/lib</outputDirectory>
     </file>
     <file>
-      <source>${project.basedir}/Run_Manager.xlsx</source>
+      <source>${project.basedir}/src/test/resources/Run_Manager.xlsx</source>
       <outputDirectory>/</outputDirectory>
     </file>
     <file>
-      <source>${project.basedir}/config.properties</source>
+      <source>${project.basedir}/src/test/resources/config.properties</source>
       <outputDirectory>/</outputDirectory>
     </file>
     <file>
